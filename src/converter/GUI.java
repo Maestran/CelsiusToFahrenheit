@@ -33,9 +33,9 @@ public class GUI extends JFrame {
         
         JPanel content = new JPanel();
         content.setPreferredSize(new Dimension(400,100));
-        content.setLayout(new BoxLayout(content,BoxLayout.PAGE_AXIS)); 
+        content.setLayout(new BoxLayout(content,BoxLayout.PAGE_AXIS));  // On se met en boxLayout pour gerer les lignes
         
-        JPanel line1 = new JPanel();
+        JPanel line1 = new JPanel();  // 1er panel, celui de la 1ere ligne comprenant le champ de saisie et le mot "Celsius"
         line1.setLayout(new BorderLayout());
         line1.setPreferredSize(new Dimension(400,50));
         
@@ -50,7 +50,7 @@ public class GUI extends JFrame {
         
         
         
-        JPanel line2 = new JPanel();
+        JPanel line2 = new JPanel();  // 2nd panel, comprenant le bouton et le resultat
         line2.setLayout(new BorderLayout());
         line2.setPreferredSize(new Dimension(400,50));
         
@@ -63,21 +63,22 @@ public class GUI extends JFrame {
         
         JLabel valueInFahrenhein = new JLabel(" ");
         
-        convert.addActionListener(new ActionListener()
+        convert.addActionListener(new ActionListener()  // Notre bouton 
                 {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double cel = Double.parseDouble(value.getText());
+                double cel = Double.parseDouble(value.getText()); // On recupere la valeur du champ
                 double far = conversion(cel);
-                valueInFahrenhein.setText(" " + far + " Fahrenheit");
+                valueInFahrenhein.setText(" " + far + " Fahrenheit"); // On update la ligne du resultat
                 
             }
                     
                 });
+        
         line2.add(convert,BorderLayout.WEST);
         line2.add(valueInFahrenhein);
                 
-        content.add(line1);
+        content.add(line1); // On ajout nos deux lignes a la fenetre principale
         content.add(line2);
         
         this.getContentPane().add(content);
@@ -85,6 +86,9 @@ public class GUI extends JFrame {
         
     }
     
+    /*
+    Methode qui calcule la valeur en fahrenheit en fonction d'une valeur en celsius
+    */
     double conversion(double celsius)
     {
        double value; 
